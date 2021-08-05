@@ -1,0 +1,35 @@
+<div class="main">
+  <div class="routes">
+    <h2>Маршрут</h2>
+    <form [formGroup]="FormGroup">
+        <div formArrayName="points" *ngFor="let item of points.controls; let i = index;">
+          <div [formGroupName]="i" class="route">
+            <div class="form-item">
+                <div class="form-item-btn-close">
+                  <div class="label-btn">
+                    <div>Название</div>
+                    <button (click)="delPoint(i)" class="button-close">&#215;</button> 
+                  </div> 
+                  <input type="text" formControlName="name" (keyup)="inputChanged()"/>
+                </div>        
+            </div>
+            <div class="form-item">
+              <label> Широта
+                <input specialIsLatLng min="-90" max="90" precision="6" type="text" formControlName="latitude" (keyup)="inputChanged()"/>
+              </label>
+              <label> Долгота
+                <input specialIsLatLng min="-180" max="180" precision="6" type="text" formControlName="longitude" (keyup)="inputChanged()"/>
+              </label>
+            </div>
+          </div>
+        </div>
+    </form>
+    <button (click)="addPoint()" class="button-add">Добавить еще одну точку</button>
+  </div>
+  <app-map class="map"
+    [points]="pointsForMap">
+  </app-map>
+</div>
+
+
+

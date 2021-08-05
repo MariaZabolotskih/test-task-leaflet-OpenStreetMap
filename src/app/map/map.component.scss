@@ -1,0 +1,10 @@
+
+#map {
+    height: 100%;
+    padding: 0;
+    border: 1px solid #000;
+}
+
+::ng-deep.leaflet-top.leaflet-right {
+    display: none;
+}
